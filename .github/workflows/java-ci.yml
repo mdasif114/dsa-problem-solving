@@ -1,0 +1,32 @@
+name: Java Starters CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  compile-starters:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Compile starter files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -d '' files < <(find must-practise strongly-recommended additional-practice -name '*_Starter.java' -print0)
+          javac "\${files[@]}"
+          find must-practise strongly-recommended additional-practice -name '*.class' -delete
