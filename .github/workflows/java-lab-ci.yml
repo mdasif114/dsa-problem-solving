@@ -1,0 +1,29 @@
+name: Java Coding Lab CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  test-coding-lab:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+          cache-dependency-path: coding/java/pom.xml
+
+      - name: Run Maven tests
+        run: mvn -B -f coding/java/pom.xml test
