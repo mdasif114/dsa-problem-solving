@@ -1,12 +1,12 @@
-# Prioritised Question Bank
+# Prioritised Engineering Problem Bank
 
-No row below is claimed as a confirmed future question. `Recurring` describes
-an underlying public pattern; `Representative` is a reasoned practice choice.
+No row below is a prediction of a future interview question. `Recurring` describes
+an underlying engineering pattern; `Representative` is a reasoned practice choice.
 See [research.md](research.md) for source quality and dates.
 
 ## 15 Must Practise
 
-| Rank | Problem and short scenario | Primary pattern | Diff. | Probability | Evidence | SRE-SE relevance |
+| Rank | Problem and short scenario | Primary pattern | Diff. | Priority | Rationale | Engineering relevance |
 |---:|---|---|---|---|---|---|
 | 01 | Rank services by ERROR log count, breaking ties deterministically | Parsing, HashMap, heap | Medium | High | Representative | Practical logs, grouping, Top-K |
 | 02 | Find clients exceeding `k` requests in any rolling time window | Sliding window, deque | Medium | High | Recurring | Rate and abuse detection; timestamp boundaries |
@@ -15,7 +15,7 @@ See [research.md](research.md) for source quality and dates.
 | 05 | Detect a cycle in service dependencies | DFS colours / Kahn | Medium | High | Recurring | Prevent unsafe deployment/dependency loops |
 | 06 | From failed services, find all transitively unavailable dependants | Reverse graph, BFS/DFS | Medium | High | Recurring | Blast-radius calculation |
 | 07 | Deduplicate retried events using ID and retention window | HashMap, queue | Medium | High | Recurring | Idempotency and replay handling |
-| 08 | Maintain recent health results and availability over the last `n` checks | Queue/deque, stream | Medium | High | Recurring | Adapted from reported moving-average stream pattern |
+| 08 | Maintain recent health results and availability over the last `n` checks | Queue/deque, stream | Medium | High | Recurring | Adapted from common stream-processing pattern |
 | 09 | Aggregate metric values by service and fixed time bucket | Parsing, nested maps | Medium | High | Representative | Metrics pipelines and time bucketing |
 | 10 | Return the first timestamp where cumulative errors breach a limit | Prefix sum / binary search | Medium | High | Representative | Threshold detection with ordered data |
 | 11 | Canonicalise Unix-style paths with `.`, `..`, and repeated separators | Stack/deque, strings | Medium | High | Recurring | Practical path and file manipulation |
@@ -26,7 +26,7 @@ See [research.md](research.md) for source quality and dates.
 
 ## 15 Strongly Recommended
 
-| Rank | Problem and short scenario | Primary pattern | Diff. | Probability | Evidence | SRE-SE relevance |
+| Rank | Problem and short scenario | Primary pattern | Diff. | Priority | Rationale | Engineering relevance |
 |---:|---|---|---|---|---|---|
 | 16 | Merge several timestamp-sorted log streams | Heap, multiway merge | Medium | High | Representative | Distributed log collection |
 | 17 | Compute peak concurrent incidents | Sweep line / heap | Medium | High | Recurring | Interval boundaries and capacity |
@@ -46,7 +46,7 @@ See [research.md](research.md) for source quality and dates.
 
 ## 10 Additional Practice
 
-| Rank | Problem and short scenario | Primary pattern | Diff. | Probability | Evidence | SRE-SE relevance |
+| Rank | Problem and short scenario | Primary pattern | Diff. | Priority | Rationale | Engineering relevance |
 |---:|---|---|---|---|---|---|
 | 31 | Return the first event type seen exactly once | HashMap, ordered scan | Easy | Medium | Recurring | Stream/frequency basics |
 | 32 | Add two sparse metric matrices | HashMap, matrix | Medium | Lower | Representative | Sparse telemetry representation |
@@ -64,7 +64,7 @@ See [research.md](research.md) for source quality and dates.
 - One variation is used when it adds a distinct operational constraint, such as
   deterministic ties, timestamp expiry, or a changed follow-up.
 - P01–P30 receive most preparation time.
-- P31–P40 provide breadth after high-probability patterns are stable.
+- P31–P40 provide breadth after high-priority patterns are stable.
 - The full solution document for a problem is created only after an attempt. It
   will contain the straightforward approach, optimal reasoning, complexity,
   dry run, follow-ups, extensions, common mistakes, and a speakable explanation.
