@@ -28,5 +28,5 @@ jobs:
         run: |
           set -euo pipefail
           mapfile -d '' files < <(find must-practise strongly-recommended additional-practice -name '*_Starter.java' -print0)
-          javac "\${files[@]}"
+          javac "${files[@]}"
           find must-practise strongly-recommended additional-practice -name '*.class' -delete
